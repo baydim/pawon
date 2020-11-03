@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/route_manager.dart';
 import 'package:pawon/screen/beranda.dart';
-import 'package:pawon/screen/satuan.dart';
+import 'package:pawon/satuan.dart';
 
 class Hm extends StatefulWidget {
   @override
@@ -13,9 +13,56 @@ class _HmState extends State<Hm> {
   final email = TextEditingController();
   final pw = TextEditingController();
 
-  Widget input(int max, String nama, final control, bool ob) {
+  final emaildaf = TextEditingController();
+  final pwdaf = TextEditingController();
+////////////signup
+  void signup() {
+    Get.bottomSheet(Container(
+      padding: EdgeInsets.all(15),
+      height: 280,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: teal,
+      ),
+      child: Column(
+        children: <Widget>[
+          Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Sign up",
+                style: TextStyle(
+                    color: putih, fontFamily: 'Poppins-bold', fontSize: 30),
+              )),
+          jar15,
+          input("Email", emaildaf, false),
+          jar10,
+          input("Password", pwdaf, true),
+          jar20,
+          MaterialButton(
+              elevation: 2,
+              focusElevation: 0,
+              hoverElevation: 0,
+              highlightElevation: 0,
+              splashColor: teal,
+              textColor: teal,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(40))),
+              minWidth: MediaQuery.of(context).size.width,
+              height: tinggi,
+              color: putih,
+              child: Text("Sign up"),
+              onPressed: () {
+                Get.back();
+              }),
+        ],
+      ),
+    ));
+  }
+//////////signup
+
+  Widget input(String nama, final control, bool ob) {
     return Container(
-      padding: EdgeInsets.fromLTRB(15, 4, 15, 0),
+      padding: EdgeInsets.fromLTRB(15, 1, 15, 0),
       width: double.infinity,
       child: TextField(
         obscureText: ob,
@@ -23,11 +70,9 @@ class _HmState extends State<Hm> {
         onChanged: (value) {
           setState(() {});
         },
-        maxLength: max,
         keyboardType: TextInputType.text,
         style: TextStyle(fontSize: 14),
         decoration: InputDecoration(
-          counter: SizedBox(width: 0, height: 0),
           hintText: nama,
           border: InputBorder.none,
           disabledBorder: InputBorder.none,
@@ -35,10 +80,10 @@ class _HmState extends State<Hm> {
           focusedBorder: InputBorder.none,
         ),
       ),
-      height: 55,
+      height: 50,
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: border,
+          borderRadius: BorderRadius.all(Radius.circular(40)),
           boxShadow: [
             BoxShadow(color: Colors.grey, blurRadius: 2, spreadRadius: 0)
           ]),
@@ -47,21 +92,17 @@ class _HmState extends State<Hm> {
 
   Widget tombol() {
     return Container(
-      height: 360,
+      height: 330,
       padding: EdgeInsets.only(left: 15, right: 15),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Column(
             children: <Widget>[
-              input(20, "Email", email, false),
-              SizedBox(
-                height: 15,
-              ),
-              input(20, "Password", pw, true),
-              SizedBox(
-                height: 25,
-              ),
+              input("Email", email, false),
+              jar10,
+              input("Password", pw, true),
+              jar20,
               MaterialButton(
                   elevation: 2,
                   focusElevation: 0,
@@ -69,7 +110,8 @@ class _HmState extends State<Hm> {
                   highlightElevation: 0,
                   splashColor: putih,
                   textColor: putih,
-                  shape: RoundedRectangleBorder(borderRadius: border),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(40))),
                   minWidth: MediaQuery.of(context).size.width,
                   height: tinggi,
                   color: teal,
@@ -79,9 +121,6 @@ class _HmState extends State<Hm> {
                         transition: Transition.downToUp,
                         duration: Duration(milliseconds: 400));
                   }),
-              SizedBox(
-                height: 15,
-              ),
               Container(
                 width: MediaQuery.of(context).size.width / 2,
                 child: Row(
@@ -122,11 +161,14 @@ class _HmState extends State<Hm> {
             ],
           ),
           InkWell(
+            onTap: () {
+              signup();
+            },
             child: Text("Sign up",
                 style: TextStyle(
                   color: putih,
                 )),
-          )
+          ),
         ],
       ),
     );
@@ -205,3 +247,4 @@ class _HmState extends State<Hm> {
     );
   }
 }
+
