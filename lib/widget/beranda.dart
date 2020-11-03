@@ -1,8 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
-import 'package:pawon/screen/cari.dart';
-import 'package:pawon/screen/satuan.dart';
+cari sediri wekkkkk
 
 class Beranda extends StatefulWidget {
   @override
@@ -97,6 +93,8 @@ class _BerandaState extends State<Beranda> {
       }).toList(),
     );
   }
+  
+  ////////////////////////////////copyrighthttps://github.com/baydim/
 
   @override
   Widget build(BuildContext context) {
